@@ -1,0 +1,15 @@
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/edit_cache.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/rebuild_cache.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/intrinsics_gen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/omp_gen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/acc_gen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/ARMTargetParserTableGen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/AArch64TargetParserTableGen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/RISCVTargetParserTableGen.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/TensileHost.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/edit_cache.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/lib/CMakeFiles/rebuild_cache.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/client/CMakeFiles/TensileClient.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/client/CMakeFiles/tensile_client.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/client/CMakeFiles/edit_cache.dir
+/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/client/CMakeFiles/rebuild_cache.dir

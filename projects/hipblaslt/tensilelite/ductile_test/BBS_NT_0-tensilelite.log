@@ -1,0 +1,173 @@
+
+################################################################################
+#
+#  Tensile v5.0.0
+#  OutputPath: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id
+#  Config: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/BBS_NT_0.yaml
+#  Date & Time: 30/07/2025 17:55:10
+#
+################################################################################
+
+# Restoring default globalParameters
+# Code Object Version: 4
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+# Detected GPU 0 with ISA: gfx950
+Tensile::WARNING: HardwareMonitor currently disabled for gfx950
+Capability         gfx950
+HasMFMA_bf16_1k    1     
+HasAddLshl         1     
+HasAtomicAdd       1     
+HasBF16CVT         1     
+HasDirectToLds     1     
+HasDirectToLdsx4   1     
+HasExplicitCO      1     
+HasExplicitNC      -     
+HasGLCModifier     -     
+HasLDSTr           1     
+HasLshlOr          1     
+HasMFMA            1     
+HasMUBUFConst      1     
+HasNTModifier      1     
+HasNewBarrier      -     
+HasSCMPK           1     
+HasSMFMA           1     
+HasSMulHi          1     
+HasWMMA            -     
+MaxLgkmcnt         1     
+MaxVmcnt           1     
+SeparateLGKMcnt    -     
+SeparateVMcnt      -     
+SeparateVscnt      -     
+SupportedISA       1     
+SupportedSource    1     
+HasWMMA_V1         -     
+HasWMMA_V2         -     
+s_delay_alu        -     
+v_prng_b32         1     
+v_mov_b64          1     
+HasMFMA_b8         1     
+v_dot2_f32_bf16    1     
+v_dot2c_f32_bf16   1     
+HasMFMA_explictB   1     
+Hascvtfp8_f16      1     
+v_dot2_f32_f16     1     
+v_dot2c_f32_f16    1     
+v_fma_f16          1     
+v_fmac_f16         -     
+v_mac_f16          1     
+v_pk_fma_f16       1     
+v_pk_fmac_f16      -     
+v_fma_f32          1     
+v_fma_mix_f32      1     
+v_fmac_f32         1     
+v_mac_f32          -     
+v_mad_mix_f32      -     
+v_pk_add_f32       1     
+v_pk_mul_f32       1     
+HasMFMA_f64        1     
+v_fma_f64          1     
+HasMFMA_f8         1     
+HasMFMA_f8f6f4     1     
+Hascvtf16_fp8      1     
+VOP3v_dot4_i32_i8  1     
+v_dot4_i32_i8      -     
+v_dot4c_i32_i8     1     
+HasMFMA_xf32       -     
+ArchAccUnifiedRegs 1     
+CMPXWritesSGPR     1     
+CrosslaneWait      1     
+DSLow16NotPreserve -     
+DeviceLDS          1     
+HasAccCD           1     
+HasEccHalf         1     
+HasF32XEmulation   1     
+HasFP8_OCP         -     
+HasSchedMode       -     
+HasWave32          -     
+NoSDWA             -     
+SDWAWait           1     
+TransOpWait        1     
+VOP3ByteSel        -     
+VgprBank           -     
+Waitcnt0Disabled   1     
+WorkGroupIdFromTTM -     
+# Found hipcc version 6.5.50421-9e0f69f3c
+Tensile::WARNING: Global parameter MaxFileName = 256 unrecognised.
+Tensile::WARNING: Global parameter DeviceLDS = 163840 unrecognised.
+Tensile::WARNING: Global parameter MaxLDS = 163840 unrecognised.
+# Command-line override: CodeObjectVersion
+Overriding CodeObjectVersion=4
+Tensile::WARNING: MaxFileName is no longer configurable, it will be automatically set to 64
+LLVMObjectYAML_LIBRARY: /opt/rocm/lib/llvm/lib/libLLVMObjectYAML.a
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build
+[  2%] Building CXX object lib/CMakeFiles/TensileHost.dir/source/llvm/YAML.cpp.o
+[  4%] Building CXX object lib/CMakeFiles/TensileHost.dir/source/msgpack/MessagePack.cpp.o
+[  6%] Building CXX object lib/CMakeFiles/TensileHost.dir/source/llvm/Loading.cpp.o
+[  8%] Linking CXX static library libTensileHost.a
+[ 54%] Built target TensileHost
+[ 56%] Building CXX object client/CMakeFiles/TensileClient.dir/source/BenchmarkTimer.cpp.o
+[ 58%] Building CXX object client/CMakeFiles/TensileClient.dir/source/DataInitialization.cpp.o
+[ 60%] Building CXX object client/CMakeFiles/TensileClient.dir/source/HardwareMonitor.cpp.o
+[ 63%] Building CXX object client/CMakeFiles/TensileClient.dir/source/LibraryUpdateReporter.cpp.o
+[ 67%] Building CXX object client/CMakeFiles/TensileClient.dir/source/CSVStackFile.cpp.o
+[ 67%] Building CXX object client/CMakeFiles/TensileClient.dir/source/HardwareMonitorListener.cpp.o
+[ 69%] Building CXX object client/CMakeFiles/TensileClient.dir/source/ClientProblemFactory.cpp.o
+[ 71%] Building CXX object client/CMakeFiles/TensileClient.dir/source/ReferenceValidator.cpp.o
+[ 73%] Building CXX object client/CMakeFiles/TensileClient.dir/source/PerformanceReporter.cpp.o
+[ 76%] Building CXX object client/CMakeFiles/TensileClient.dir/source/MetaRunListener.cpp.o
+[ 78%] Building CXX object client/CMakeFiles/TensileClient.dir/source/ResultFileReporter.cpp.o
+[ 82%] Building CXX object client/CMakeFiles/TensileClient.dir/source/Reference.cpp.o
+[ 82%] Building CXX object client/CMakeFiles/TensileClient.dir/source/ProgressListener.cpp.o
+[ 86%] Building CXX object client/CMakeFiles/TensileClient.dir/source/SolutionIterator.cpp.o
+[ 86%] Building CXX object client/CMakeFiles/TensileClient.dir/source/Rotating.cpp.o
+[ 89%] Building CXX object client/CMakeFiles/TensileClient.dir/source/TimingEvents.cpp.o
+[ 91%] Building CXX object client/CMakeFiles/TensileClient.dir/source/ResultReporter.cpp.o
+[ 93%] Building CXX object client/CMakeFiles/TensileClient.dir/source/TypedId.cpp.o
+[ 95%] Linking CXX static library libTensileClient.a
+[ 95%] Built target TensileClient
+[ 97%] Building CXX object client/CMakeFiles/tensile_client.dir/main.cpp.o
+[100%] Linking CXX executable tensile_client
+[100%] Built target tensile_client
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# Filling in Parameters With Defaults
+# Convert Parameters to Benchmark Step(s)
+# Benchmark Final
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bjlk_BBS_BH_UserArgs_00 - 00_Final 80.532s
+# Num Sizes: 1
+# Factor Dim steps: 0
+# Bias Type steps: 0
+# Activation steps: 0
+# ICacheFlush steps: 1
+# Fork Parameters:
+#     VectorWidthA: [-1, 8]
+#     VectorWidthB: [-1, 8]
+#     GlobalReadVectorWidthA: [2, 8]
+#     GlobalReadVectorWidthB: [2, 8]
+#     WaveSeparateGlobalReadA: [0, 2]
+#     WaveSeparateGlobalReadB: [0, 2]
+#     PrefetchGlobalRead: [1, 2]
+#     WorkGroupMapping: [6, 8, 1]
+#     1LDSBuffer: [0, 1]
+#     DepthU: [64, 128, 256, 512]
+#     StreamKXCCMapping: [0, 8]
+# Enumerating Solutions

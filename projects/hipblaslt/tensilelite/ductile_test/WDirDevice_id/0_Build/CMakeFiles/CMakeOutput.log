@@ -1,0 +1,440 @@
+The system is: Linux - 6.8.2-amdsos-build58-ubuntu-22.04+ - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/rocm/bin/amdclang 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/3.25.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /opt/rocm/bin/amdclang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/3.25.2/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f37b9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f37b9.dir/build.make CMakeFiles/cmTC_f37b9.dir/build
+gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k'
+Building C object CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o
+/opt/rocm/bin/amdclang   -v -MD -MT CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.25/Modules/CMakeCCompilerABI.c
+AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin
+Build config: +assertions
+Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang.cfg
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../.., version 6.5.50421
+ (in-process)
+ "/opt/rocm-7.0.0/lib/llvm/bin/clang-19" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k -v -fcoverage-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k -resource-dir /opt/rocm-7.0.0/lib/llvm/lib/clang/19 -dependency-file CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.25/Modules/CMakeCCompilerABI.c
+clang -cc1 version 19.0.0git based upon LLVM 19.0.0git default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking C executable cmTC_f37b9
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f37b9.dir/link.txt --verbose=1
+/opt/rocm/bin/amdclang  -v CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -o cmTC_f37b9 
+AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin
+Build config: +assertions
+Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang.cfg
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../.., version 6.5.50421
+ "/opt/rocm-7.0.0/lib/llvm/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f37b9 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib --enable-new-dtags CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a --as-needed -lgcc_s --no-as-needed -lc /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a --as-needed -lgcc_s --no-as-needed /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o /lib/x86_64-linux-gnu/crtn.o
+gmake[1]: Leaving directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include] ==> [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f37b9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f37b9.dir/build.make CMakeFiles/cmTC_f37b9.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k']
+  ignore line: [Building C object CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/rocm/bin/amdclang   -v -MD -MT CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.25/Modules/CMakeCCompilerABI.c]
+  ignore line: [AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin]
+  ignore line: [Build config: +assertions]
+  ignore line: [Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../..  version 6.5.50421]
+  ignore line: [ (in-process)]
+  ignore line: [ "/opt/rocm-7.0.0/lib/llvm/bin/clang-19" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k -v -fcoverage-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-hTzs7k -resource-dir /opt/rocm-7.0.0/lib/llvm/lib/clang/19 -dependency-file CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.25/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 19.0.0git based upon LLVM 19.0.0git default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_f37b9]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f37b9.dir/link.txt --verbose=1]
+  ignore line: [/opt/rocm/bin/amdclang  -v CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o -o cmTC_f37b9 ]
+  ignore line: [AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin]
+  ignore line: [Build config: +assertions]
+  ignore line: [Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../..  version 6.5.50421]
+  link line: [ "/opt/rocm-7.0.0/lib/llvm/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f37b9 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib --enable-new-dtags CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a --as-needed -lgcc_s --no-as-needed -lc /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a --as-needed -lgcc_s --no-as-needed /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/opt/rocm-7.0.0/lib/llvm/bin/ld.lld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_f37b9] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crt1.o] ==> obj [/lib/x86_64-linux-gnu/crt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o] ==> obj [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [--enable-new-dtags] ==> ignore
+    arg [CMakeFiles/cmTC_f37b9.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a] ==> lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a] ==> lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o] ==> obj [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  remove lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+  remove lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12] ==> [/usr/lib/gcc/x86_64-linux-gnu/12]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [gcc_s;c;gcc_s]
+  implicit objs: [/lib/x86_64-linux-gnu/crt1.o;/lib/x86_64-linux-gnu/crti.o;/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o;/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/12;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_98f1f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_98f1f.dir/build.make CMakeFiles/cmTC_98f1f.dir/build
+gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B'
+Building CXX object CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o
+/opt/rocm/bin/amdclang++   -v -MD -MT CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp
+AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin
+Build config: +assertions
+Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang++.cfg
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../.., version 6.5.50421
+ (in-process)
+ "/opt/rocm-7.0.0/lib/llvm/bin/clang-19" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B -v -fcoverage-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B -resource-dir /opt/rocm-7.0.0/lib/llvm/lib/clang/19 -dependency-file CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward -internal-isystem /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 19.0.0git based upon LLVM 19.0.0git default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12
+ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12
+ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward
+ /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking CXX executable cmTC_98f1f
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98f1f.dir/link.txt --verbose=1
+/opt/rocm/bin/amdclang++  -v CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_98f1f 
+AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin
+Build config: +assertions
+Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang++.cfg
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../.., version 6.5.50421
+ "/opt/rocm-7.0.0/lib/llvm/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_98f1f /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib --enable-new-dtags CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a -lgcc_s -lc /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a -lgcc_s /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o /lib/x86_64-linux-gnu/crtn.o
+gmake[1]: Leaving directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward]
+    add: [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12] ==> [/usr/include/c++/12]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12] ==> [/usr/include/x86_64-linux-gnu/c++/12]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward] ==> [/usr/include/c++/12/backward]
+  collapse include dir [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include] ==> [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/12;/usr/include/x86_64-linux-gnu/c++/12;/usr/include/c++/12/backward;/opt/rocm-7.0.0/lib/llvm/lib/clang/19/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_98f1f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_98f1f.dir/build.make CMakeFiles/cmTC_98f1f.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B']
+  ignore line: [Building CXX object CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/opt/rocm/bin/amdclang++   -v -MD -MT CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin]
+  ignore line: [Build config: +assertions]
+  ignore line: [Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang++.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../..  version 6.5.50421]
+  ignore line: [ (in-process)]
+  ignore line: [ "/opt/rocm-7.0.0/lib/llvm/bin/clang-19" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B -v -fcoverage-compilation-dir=/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-c6Sc4B -resource-dir /opt/rocm-7.0.0/lib/llvm/lib/clang/19 -dependency-file CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward -internal-isystem /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 19.0.0git based upon LLVM 19.0.0git default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/12/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/x86_64-linux-gnu/c++/12]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/../../../../include/c++/12/backward]
+  ignore line: [ /opt/rocm-7.0.0/lib/llvm/lib/clang/19/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_98f1f]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98f1f.dir/link.txt --verbose=1]
+  ignore line: [/opt/rocm/bin/amdclang++  -v CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_98f1f ]
+  ignore line: [AMD clang version 19.0.0git (ssh://github-emu/AMD-Lightning-Internal/llvm-project  25195 1ce493ae0245f699a873f312add8993e38f5a35f)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /opt/rocm-7.0.0/lib/llvm/bin]
+  ignore line: [Build config: +assertions]
+  ignore line: [Configuration file: /opt/rocm-7.0.0/lib/llvm/bin/clang++.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [Found HIP installation: /opt/rocm-7.0.0/lib/llvm/bin/../../..  version 6.5.50421]
+  link line: [ "/opt/rocm-7.0.0/lib/llvm/bin/ld.lld" -z relro --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_98f1f /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/lib -L/usr/lib --enable-new-dtags CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a -lgcc_s -lc /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a -lgcc_s /opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/opt/rocm-7.0.0/lib/llvm/bin/ld.lld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_98f1f] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crt1.o] ==> obj [/lib/x86_64-linux-gnu/crt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o] ==> obj [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [--enable-new-dtags] ==> ignore
+    arg [CMakeFiles/cmTC_98f1f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a] ==> lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lc] ==> lib [c]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a] ==> lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o] ==> obj [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  remove lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+  remove lib [/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/libclang_rt.builtins-x86_64.a]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12] ==> [/usr/lib/gcc/x86_64-linux-gnu/12]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;c;gcc_s]
+  implicit objs: [/lib/x86_64-linux-gnu/crt1.o;/lib/x86_64-linux-gnu/crti.o;/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtbegin-x86_64.o;/opt/rocm-7.0.0/lib/llvm/lib/clang/19/lib/linux/clang_rt.crtend-x86_64.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/12;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-U9nBJx
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a87c0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a87c0.dir/build.make CMakeFiles/cmTC_a87c0.dir/build
+gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-U9nBJx'
+Building C object CMakeFiles/cmTC_a87c0.dir/src.c.o
+/opt/rocm/bin/amdclang -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_a87c0.dir/src.c.o -MF CMakeFiles/cmTC_a87c0.dir/src.c.o.d -o CMakeFiles/cmTC_a87c0.dir/src.c.o -c /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-U9nBJx/src.c
+Linking C executable cmTC_a87c0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a87c0.dir/link.txt --verbose=1
+/opt/rocm/bin/amdclang CMakeFiles/cmTC_a87c0.dir/src.c.o -o cmTC_a87c0 
+gmake[1]: Leaving directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-U9nBJx'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Performing C++ SOURCE FILE Test HIP_CLANG_SUPPORTS_PARALLEL_JOBS succeeded with the following output:
+Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-PLiryy
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_144d4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_144d4.dir/build.make CMakeFiles/cmTC_144d4.dir/build
+gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-PLiryy'
+Building CXX object CMakeFiles/cmTC_144d4.dir/src.cxx.o
+/opt/rocm/bin/amdclang++ -DHIP_CLANG_SUPPORTS_PARALLEL_JOBS  -parallel-jobs=1 -MD -MT CMakeFiles/cmTC_144d4.dir/src.cxx.o -MF CMakeFiles/cmTC_144d4.dir/src.cxx.o.d -o CMakeFiles/cmTC_144d4.dir/src.cxx.o -c /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-PLiryy/src.cxx
+Linking CXX executable cmTC_144d4
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_144d4.dir/link.txt --verbose=1
+/opt/rocm/bin/amdclang++ CMakeFiles/cmTC_144d4.dir/src.cxx.o -o cmTC_144d4 
+gmake[1]: Leaving directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-PLiryy'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test CXX_FAST_MATH_FLAG_SUPPORTED succeeded with the following output:
+Change Dir: /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-h1eajx
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_dda29/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_dda29.dir/build.make CMakeFiles/cmTC_dda29.dir/build
+gmake[1]: Entering directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-h1eajx'
+Building CXX object CMakeFiles/cmTC_dda29.dir/src.cxx.o
+/opt/rocm/bin/amdclang++ -DCXX_FAST_MATH_FLAG_SUPPORTED  -ffast-math -MD -MT CMakeFiles/cmTC_dda29.dir/src.cxx.o -MF CMakeFiles/cmTC_dda29.dir/src.cxx.o.d -o CMakeFiles/cmTC_dda29.dir/src.cxx.o -c /home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-h1eajx/src.cxx
+Linking CXX executable cmTC_dda29
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dda29.dir/link.txt --verbose=1
+/opt/rocm/bin/amdclang++ CMakeFiles/cmTC_dda29.dir/src.cxx.o -o cmTC_dda29 
+gmake[1]: Leaving directory '/home/bpoursar/workspace/rocm-libraries/projects/hipblaslt/tensilelite/ductile_test/WDirDevice_id/0_Build/CMakeFiles/CMakeScratch/TryCompile-h1eajx'
+
+
+Source file was:
+int main() { return 0; }
+
