@@ -1,230 +1,210 @@
 #!/usr/bin/env python3
 
+# python3 origami_test.py -m 2048 -n 2048 -k 2048 --transA T --transB N --element_size 1 --debug --print
+
 import argparse
 import origami
+import csv
 
 
 def parseArguments():
     parser = argparse.ArgumentParser(description="""Test Origami.""")
     parser.add_argument("-m", type=int, default=8192)
     parser.add_argument("-n", type=int, default=8192)
+    parser.add_argument("-b", type=int, default=1)
     parser.add_argument("-k", type=int, default=8192)
     parser.add_argument("--transA", type=bool, default=True)
     parser.add_argument("--transB", type=bool, default=False)
     parser.add_argument("--device", type=int, default=0)
-    parser.add_argument("--element_size", type=int, default=2)
+    parser.add_argument("--element_size", type=int, default=2) # can be absorbed in gemm type
     parser.add_argument("--miDataType", type=int, default=4)
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--print", action="store_true")
     parser.add_argument("--wgm", type=int, default=6)
+    parser.add_argument("--sizes", type=bool, default=False) # to load the sizes from a csv file. m/n/k will be ignored if True
+    parser.add_argument("--path", type=str, default="./sizes.csv")  # path to the csv file. Fails if sizes is true, and path or file does not exist.
+    parser.add_argument("--type", type=str, default="B_gfx950")  # path to the csv file. Fails if sizes is true, and path or file does not exist {M, N, B, K}. No header should be int the file.
 
     return parser.parse_args()
 
+# create all tile lists based on the 
+def createTileList(gemmType):
+    #tile [MT0, MT1, DU, MFMA0, MFMA1, MFMA2, CUOccupancy = 1]
+    # MT1 =  MT0 = list(range(16, 513, 16))
+    
+    # list of MIs for each datatype:
+    MI = {
+    "F8_gfx950": [
+        (4,4,4,16), #gfx942
+        (16,16,128,1), #gfx950
+        (32,32,64,1) #gfx950
+        ],     
+    "H_gfx950":[
+        # (4,4,4,16), #gfx942
+        #[16,16,4,4] # never use 16x16x4x4
+        #[16,16,16,1] #gfx942
+        #[32,32,4,2] # never use 32x32x4x2
+        #[32,32,8,1] #gfx942                          
+        (16,16,32,1), #gfx950
+        (32,32,16,1) #gfx950
+        ],
+    "B_gfx950":[
+        (4,4,4,16), #gfx942
+        #[16,16,4,4] # never use 16x16x4x4
+        #[16,16,16,1] #gfx942
+        #[32,32,4,2] # never use 32x32x4x2
+        #[32,32,8,1] #gfx942                          
+        (16,16,32,1), #gfx950
+        # (32,32,16,1) #gfx950
+        ],
+    "S_gfx950":[
+        (16,16,4,1),
+        (32,32,2,1)
+        ],
+    "X_gfx950": [
+      (32,32,4,1),
+      (16,16,8,1)
+        ],
+    "D_gfx950":[
+      (16,16,4,1)
+        ],
+    # "C_gfx950": [
+    #   (16,16,4,1)
+    #     ],  
+    # "Z_gfx950":[
+    #   (16,16,4,1)
+    #     ],
+    # "I8_gfx950": [
+    #   (32,32,16,1),
+    #   (16,16,32,1),
+    #   (4,4,4,16)
+    # ],
+    }
+    LIST_OF_WAVEs_TO_INCLUDE = [[4, 1], [2, 2], [1, 4], [1, 2], [2, 1], [1, 1]]
+    MIN_MT0 = MIN_MT1 = 16
+    MAX_MT0 = MAX_MT1 = 512
+    bm_max = 0
+    tile_list = set()
+    for MI in MI[gemmType]:
+        for bm in range(bm_max + 1):
+            MIBlockM = 2 ** bm
 
-tile_list = [
-    (256, 256, 32, 16, 16, 16),
-    (256, 224, 32, 16, 16, 16),
-    (256, 192, 32, 16, 16, 16),
-    (256, 160, 32, 16, 16, 16),
-    (256, 128, 32, 16, 16, 16),
-    (256, 96, 32, 16, 16, 16),
-    (256, 64, 32, 16, 16, 16),
-    (256, 32, 32, 16, 16, 16),
-    (224, 256, 32, 16, 16, 16),
-    (224, 224, 32, 16, 16, 16),
-    (224, 192, 32, 16, 16, 16),
-    (224, 160, 32, 16, 16, 16),
-    (224, 128, 32, 16, 16, 16),
-    (224, 96, 32, 16, 16, 16),
-    (224, 64, 32, 16, 16, 16),
-    (224, 32, 32, 16, 16, 16),
-    (192, 256, 32, 16, 16, 16),
-    (192, 224, 32, 16, 16, 16),
-    (192, 192, 32, 16, 16, 16),
-    (192, 160, 32, 16, 16, 16),
-    (192, 128, 32, 16, 16, 16),
-    (192, 96, 32, 16, 16, 16),
-    (192, 64, 32, 16, 16, 16),
-    (192, 32, 32, 16, 16, 16),
-    (160, 256, 32, 16, 16, 16),
-    (160, 224, 32, 16, 16, 16),
-    (160, 192, 32, 16, 16, 16),
-    (160, 160, 32, 16, 16, 16),
-    (160, 128, 32, 16, 16, 16),
-    (160, 96, 32, 16, 16, 16),
-    (160, 64, 32, 16, 16, 16),
-    (160, 32, 32, 16, 16, 16),
-    (128, 256, 32, 16, 16, 16),
-    (128, 224, 32, 16, 16, 16),
-    (128, 192, 32, 16, 16, 16),
-    (128, 160, 32, 16, 16, 16),
-    (128, 128, 32, 16, 16, 16),
-    (128, 96, 32, 16, 16, 16),
-    (128, 64, 32, 16, 16, 16),
-    (128, 32, 32, 16, 16, 16),
-    (96, 256, 32, 16, 16, 16),
-    (96, 224, 32, 16, 16, 16),
-    (96, 192, 32, 16, 16, 16),
-    (96, 160, 32, 16, 16, 16),
-    (96, 128, 32, 16, 16, 16),
-    (96, 96, 32, 16, 16, 16),
-    (96, 64, 32, 16, 16, 16),
-    (96, 32, 32, 16, 16, 16),
-    (64, 256, 32, 16, 16, 16),
-    (64, 224, 32, 16, 16, 16),
-    (64, 192, 32, 16, 16, 16),
-    (64, 160, 32, 16, 16, 16),
-    (64, 128, 32, 16, 16, 16),
-    (64, 96, 32, 16, 16, 16),
-    (64, 64, 32, 16, 16, 16),
-    (64, 32, 32, 16, 16, 16),
-    (32, 256, 32, 16, 16, 16),
-    (32, 224, 32, 16, 16, 16),
-    (32, 192, 32, 16, 16, 16),
-    (32, 160, 32, 16, 16, 16),
-    (32, 128, 32, 16, 16, 16),
-    (32, 96, 32, 16, 16, 16),
-    (32, 64, 32, 16, 16, 16),
-    (32, 32, 32, 16, 16, 16),
-    (256, 240, 32, 16, 16, 16),
-    (256, 208, 32, 16, 16, 16),
-    (256, 176, 32, 16, 16, 16),
-    (256, 144, 32, 16, 16, 16),
-    (256, 112, 32, 16, 16, 16),
-    (256, 80, 32, 16, 16, 16),
-    (256, 48, 32, 16, 16, 16),
-    (256, 16, 32, 16, 16, 16),
-    (240, 256, 32, 16, 16, 16),
-    (208, 256, 32, 16, 16, 16),
-    (176, 256, 32, 16, 16, 16),
-    (144, 256, 32, 16, 16, 16),
-    (112, 256, 32, 16, 16, 16),
-    (80, 256, 32, 16, 16, 16),
-    (48, 256, 32, 16, 16, 16),
-    (16, 256, 32, 16, 16, 16),
-    (256, 224, 64, 16, 16, 16),
-    (256, 192, 64, 16, 16, 16),
-    (256, 160, 64, 16, 16, 16),
-    (256, 128, 64, 16, 16, 16),
-    (256, 96, 64, 16, 16, 16),
-    (256, 64, 64, 16, 16, 16),
-    (256, 32, 64, 16, 16, 16),
-    (224, 256, 64, 16, 16, 16),
-    (224, 224, 64, 16, 16, 16),
-    (224, 192, 64, 16, 16, 16),
-    (224, 160, 64, 16, 16, 16),
-    (224, 128, 64, 16, 16, 16),
-    (224, 96, 64, 16, 16, 16),
-    (224, 64, 64, 16, 16, 16),
-    (224, 32, 64, 16, 16, 16),
-    (192, 256, 64, 16, 16, 16),
-    (192, 224, 64, 16, 16, 16),
-    (192, 192, 64, 16, 16, 16),
-    (192, 160, 64, 16, 16, 16),
-    (192, 128, 64, 16, 16, 16),
-    (192, 96, 64, 16, 16, 16),
-    (192, 64, 64, 16, 16, 16),
-    (192, 32, 64, 16, 16, 16),
-    (160, 256, 64, 16, 16, 16),
-    (160, 224, 64, 16, 16, 16),
-    (160, 192, 64, 16, 16, 16),
-    (160, 160, 64, 16, 16, 16),
-    (160, 128, 64, 16, 16, 16),
-    (160, 96, 64, 16, 16, 16),
-    (160, 64, 64, 16, 16, 16),
-    (160, 32, 64, 16, 16, 16),
-    (128, 256, 64, 16, 16, 16),
-    (128, 224, 64, 16, 16, 16),
-    (128, 192, 64, 16, 16, 16),
-    (128, 160, 64, 16, 16, 16),
-    (128, 128, 64, 16, 16, 16),
-    (128, 96, 64, 16, 16, 16),
-    (128, 64, 64, 16, 16, 16),
-    (128, 32, 64, 16, 16, 16),
-    (96, 256, 64, 16, 16, 16),
-    (96, 224, 64, 16, 16, 16),
-    (96, 192, 64, 16, 16, 16),
-    (96, 160, 64, 16, 16, 16),
-    (96, 128, 64, 16, 16, 16),
-    (96, 96, 64, 16, 16, 16),
-    (96, 64, 64, 16, 16, 16),
-    (96, 32, 64, 16, 16, 16),
-    (64, 256, 64, 16, 16, 16),
-    (64, 224, 64, 16, 16, 16),
-    (64, 192, 64, 16, 16, 16),
-    (64, 160, 64, 16, 16, 16),
-    (64, 128, 64, 16, 16, 16),
-    (64, 96, 64, 16, 16, 16),
-    (64, 64, 64, 16, 16, 16),
-    (64, 32, 64, 16, 16, 16),
-    (32, 256, 64, 16, 16, 16),
-    (32, 224, 64, 16, 16, 16),
-    (32, 192, 64, 16, 16, 16),
-    (32, 160, 64, 16, 16, 16),
-    (32, 128, 64, 16, 16, 16),
-    (32, 96, 64, 16, 16, 16),
-    (32, 64, 64, 16, 16, 16),
-    (32, 32, 64, 16, 16, 16),
-    (256, 208, 64, 16, 16, 16),
-    (256, 176, 64, 16, 16, 16),
-    (256, 144, 64, 16, 16, 16),
-    (256, 112, 64, 16, 16, 16),
-    (256, 80, 64, 16, 16, 16),
-    (256, 48, 64, 16, 16, 16),
-    (256, 16, 64, 16, 16, 16),
-    (208, 256, 64, 16, 16, 16),
-    (176, 256, 64, 16, 16, 16),
-    (144, 256, 64, 16, 16, 16),
-    (112, 256, 64, 16, 16, 16),
-    (80, 256, 64, 16, 16, 16),
-    (48, 256, 64, 16, 16, 16),
-    (16, 256, 64, 16, 16, 16),
-    (192, 32, 128, 16, 16, 16),
-    (160, 64, 128, 16, 16, 16),
-    (160, 32, 128, 16, 16, 16),
-    (128, 96, 128, 16, 16, 16),
-    (128, 64, 128, 16, 16, 16),
-    (128, 32, 128, 16, 16, 16),
-    (96, 128, 128, 16, 16, 16),
-    (96, 96, 128, 16, 16, 16),
-    (96, 64, 128, 16, 16, 16),
-    (96, 32, 128, 16, 16, 16),
-    (64, 160, 128, 16, 16, 16),
-    (64, 128, 128, 16, 16, 16),
-    (64, 96, 128, 16, 16, 16),
-    (64, 64, 128, 16, 16, 16),
-    (64, 32, 128, 16, 16, 16),
-    (32, 192, 128, 16, 16, 16),
-    (32, 160, 128, 16, 16, 16),
-    (32, 128, 128, 16, 16, 16),
-    (32, 96, 128, 16, 16, 16),
-    (32, 64, 128, 16, 16, 16),
-    (32, 32, 128, 16, 16, 16),
-    (256, 256, 64, 16, 16, 16),
-]
+            for wave in LIST_OF_WAVEs_TO_INCLUDE:
+                waveTileM = 0
+                waveTileN = 0
+
+                while True:
+                    waveTileM+=1
+                    waveTileN=0
+                    MatrixInstM = MI[0] * MIBlockM
+                    MT0 = MatrixInstM * waveTileM * wave[0]
+                    if MT0 < MIN_MT0:
+                        continue
+                    if MT0 > MAX_MT0:
+                        break
+
+                    while True:
+                        waveTileN+=1
+                        MatrixInstN = MI[1] / MIBlockM * MI[3]
+                        MT1 = int(MatrixInstN * waveTileN * wave[1])
+
+                        if MT1 < MIN_MT1:
+                            continue
+                        if MT1 > MAX_MT1:
+                            break
+
+                        # LDS size check for LSU
+                        LSU = max(1, 4//wave[0]//wave[1])
+                        if LSU > 1 and MT0*MT1*4*LSU > 256*256:
+                            continue
+
+                        if MT0*MT1 > 256*256:
+                            continue
+                        for DU in [32, 64, 128, 256, 512]:
+                            tile_list.add((MT0, MT1, DU, MI[0], MI[1], MI[2], 1))
+
+    return [tile for tile in tile_list]
+
 
 
 def main():
     args = parseArguments()
 
     hardware = origami.getHardwareForDevice(args.device)
+    valid_GEMM = ["B_gfx950", "F_gfx950", "F8_gfx950", "S_gfx950", "X_gfx950", "D_gfx950"]
+    
+    GEMM = args.type
+    if (GEMM not in valid_GEMM):    
+        raise("Use a valid GEMM: B_gfx950, F_gfx950, F8_gfx950, S_gfx950, X_gfx950, D_gfx950")
+    
+    if (gemmType == "F8_gfx950")
+        element_size = 1
+    elif (gemmType == "B_gfx950" or gemmType == "F_gfx950")
+        element_size = 2
+    elif (gemmType == "S_gfx950" or gemmType == "X_gfx950")
+        element_size = 4
+    elif (gemmType == "D_gfx950")
+        element_size = 8
+
+    tile_list = createTileList(gemmType)
+    print(" Number of unique tiles: ", len(tile_list))
+
+    if (args.size and not os.path.exists(args.path)):
+        raise(" The size file does not exist.")
+    if (args.size):
+        with open("macrotile_fromOrigami.txt",'w') as file: # for the record
+            for tile in tile_list:
+                file.write(f'{tile}\n')
 
     if args.print:
         hardware.print()
 
-    print(
-        origami.select_best_macro_tile_size(
+    if (args.size): # sizes from a file
+      with open(args.path, 'r') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        for row in csv_reader:
+            M = int(row[0])
+            N = int(row[1])
+            B = int(row[2])
+            K = int(row[3])
+
+            ret = origami.select_best_macro_tile_size(
+                # args.m,
+                M,
+                # args.n,
+                N,
+                # args.k,
+                K,
+                1,
+                args.transA,
+                args.transB,
+                hardware,
+                tile_list,
+                element_size * 8,
+                element_size * 8,
+                element_size * 8,
+                args.miDataType,
+                0,
+                0.8,
+                args.debug,
+                args.print,
+                args.wgm,
+            )
+            # print(f"number of outputs: {M},{N},{B},{K},{ret[0]}")
+            print(f"{M},{N},{B},{K},{ret[0]}")
+    else: # unique size from terminal
+        ret = origami.select_best_macro_tile_size(
             args.m,
             args.n,
             args.k,
-            1,
+            args.b,
             args.transA,
             args.transB,
             hardware,
             tile_list,
-            args.element_size * 8,
-            args.element_size * 8,
-            args.element_size * 8,
+            element_size * 8,
+            element_size * 8,
+            element_size * 8,
             args.miDataType,
             0,
             0.8,
@@ -232,7 +212,8 @@ def main():
             args.print,
             args.wgm,
         )
-    )
+        print(f"The best combo for [{M}, {N}, {B}, {K}] is: {ret[0]}")
+        print(" full list: \n", ret)
 
     if args.print:
         hardware.print_debug_info()
