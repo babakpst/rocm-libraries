@@ -2,9 +2,93 @@
 
 # python3 origami_test.py -m 2048 -n 2048 -k 2048 --transA T --transB N --element_size 1 --debug --print
 
+# miDataType numbers:
+# Float: 1
+# Double: 2
+# ComplexFloat: 3
+# ComplexDouble: 4
+# Half: 5
+# Int8x4: 6
+# Int32: 7
+# BFloat16: 8
+# Int8: 9
+# Int64: 10
+# XFloat32: 11
+# Float8_fnuz: 12
+# BFloat8_fnuz: 13
+# Float8BFloat8_fnuz: 14
+# BFloat8Float8_fnuz: 15
+# Float8: 16
+# BFloat8: 17
+# Float8BFloat8: 18
+# BFloat8Float8: 19
+# Float6: 20
+# Float4: 21
+
+datatypes = {
+0 : 'S_',
+1 : 'D_', 
+4 : 'H_',
+7 : 'B_',
+10 : 'X_',
+15 : 'F8_',
+}
+
+MatInst = {
+"F8_gfx950": [
+    (4,4,4,16), #gfx942
+    (16,16,128,1), #gfx950
+    (32,32,64,1) #gfx950
+    ],     
+"H_gfx950":[
+    # (4,4,4,16), #gfx942
+    #[16,16,4,4] # never use 16x16x4x4
+    #[16,16,16,1] #gfx942
+    #[32,32,4,2] # never use 32x32x4x2
+    #[32,32,8,1] #gfx942                          
+    (16,16,32,1), #gfx950
+    (32,32,16,1) #gfx950
+    ],
+"B_gfx950":[
+    (4,4,4,16), #gfx942
+    #[16,16,4,4] # never use 16x16x4x4
+    #[16,16,16,1] #gfx942
+    #[32,32,4,2] # never use 32x32x4x2
+    #[32,32,8,1] #gfx942                          
+    (16,16,32,1), #gfx950
+    # (32,32,16,1) #gfx950
+    ],
+"S_gfx950":[
+    (16,16,4,1),
+    (32,32,2,1)
+    ],
+"X_gfx950": [
+    (32,32,4,1),
+    (16,16,8,1)
+    ],
+"D_gfx950":[
+    (16,16,4,1)
+    ],
+# "C_gfx950": [
+#   (16,16,4,1)
+#     ],  
+# "Z_gfx950":[
+#   (16,16,4,1)
+#     ],
+# "I8_gfx950": [
+#   (32,32,16,1),
+#   (16,16,32,1),
+#   (4,4,4,16)
+# ],
+}
+LIST_OF_WAVEs_TO_INCLUDE = [[4, 1], [2, 2], [1, 4], [1, 2], [2, 1], [1, 1]]
+MIN_MT0 = MIN_MT1 = 16
+MAX_MT0 = MAX_MT1 = 512
+
 import argparse
 import origami
 import csv
+import os
 
 
 def parseArguments():
@@ -16,76 +100,21 @@ def parseArguments():
     parser.add_argument("--transA", type=bool, default=True)
     parser.add_argument("--transB", type=bool, default=False)
     parser.add_argument("--device", type=int, default=0)
-    parser.add_argument("--element_size", type=int, default=2) # can be absorbed in gemm type
-    parser.add_argument("--miDataType", type=int, default=4)
+    parser.add_argument("--miDataType", type=int, default=4) # see the comment for valid numbers
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--print", action="store_true")
     parser.add_argument("--wgm", type=int, default=6)
     parser.add_argument("--sizes", type=bool, default=False) # to load the sizes from a csv file. m/n/k will be ignored if True
     parser.add_argument("--path", type=str, default="./sizes.csv")  # path to the csv file. Fails if sizes is true, and path or file does not exist.
-    parser.add_argument("--type", type=str, default="B_gfx950")  # path to the csv file. Fails if sizes is true, and path or file does not exist {M, N, B, K}. No header should be int the file.
+    parser.add_argument("--arch", type=str, default="gfx950")  # arch
 
     return parser.parse_args()
 
-# create all tile lists based on the 
 def createTileList(gemmType):
-    #tile [MT0, MT1, DU, MFMA0, MFMA1, MFMA2, CUOccupancy = 1]
-    # MT1 =  MT0 = list(range(16, 513, 16))
-    
     # list of MIs for each datatype:
-    MI = {
-    "F8_gfx950": [
-        (4,4,4,16), #gfx942
-        (16,16,128,1), #gfx950
-        (32,32,64,1) #gfx950
-        ],     
-    "H_gfx950":[
-        # (4,4,4,16), #gfx942
-        #[16,16,4,4] # never use 16x16x4x4
-        #[16,16,16,1] #gfx942
-        #[32,32,4,2] # never use 32x32x4x2
-        #[32,32,8,1] #gfx942                          
-        (16,16,32,1), #gfx950
-        (32,32,16,1) #gfx950
-        ],
-    "B_gfx950":[
-        (4,4,4,16), #gfx942
-        #[16,16,4,4] # never use 16x16x4x4
-        #[16,16,16,1] #gfx942
-        #[32,32,4,2] # never use 32x32x4x2
-        #[32,32,8,1] #gfx942                          
-        (16,16,32,1), #gfx950
-        # (32,32,16,1) #gfx950
-        ],
-    "S_gfx950":[
-        (16,16,4,1),
-        (32,32,2,1)
-        ],
-    "X_gfx950": [
-      (32,32,4,1),
-      (16,16,8,1)
-        ],
-    "D_gfx950":[
-      (16,16,4,1)
-        ],
-    # "C_gfx950": [
-    #   (16,16,4,1)
-    #     ],  
-    # "Z_gfx950":[
-    #   (16,16,4,1)
-    #     ],
-    # "I8_gfx950": [
-    #   (32,32,16,1),
-    #   (16,16,32,1),
-    #   (4,4,4,16)
-    # ],
-    }
-    LIST_OF_WAVEs_TO_INCLUDE = [[4, 1], [2, 2], [1, 4], [1, 2], [2, 1], [1, 1]]
-    MIN_MT0 = MIN_MT1 = 16
-    MAX_MT0 = MAX_MT1 = 512
     bm_max = 0
     tile_list = set()
-    for MI in MI[gemmType]:
+    for MI in MatInst[gemmType]:
         for bm in range(bm_max + 1):
             MIBlockM = 2 ** bm
 
@@ -125,33 +154,36 @@ def createTileList(gemmType):
 
     return [tile for tile in tile_list]
 
-
-
 def main():
     args = parseArguments()
 
     hardware = origami.getHardwareForDevice(args.device)
-    valid_GEMM = ["B_gfx950", "F_gfx950", "F8_gfx950", "S_gfx950", "X_gfx950", "D_gfx950"]
+
+    if (args.miDataType not in datatypes):
+        raise(" Wrong or not supported miDataType.")
     
-    GEMM = args.type
-    if (GEMM not in valid_GEMM):    
+    gemmType = datatypes[args.miDataType] + args.arch
+    if (gemmType not in MatInst):    
         raise("Use a valid GEMM: B_gfx950, F_gfx950, F8_gfx950, S_gfx950, X_gfx950, D_gfx950")
-    
-    if (gemmType == "F8_gfx950")
+    element_size = 0
+    if (args.miDataType == 16):
         element_size = 1
-    elif (gemmType == "B_gfx950" or gemmType == "F_gfx950")
+    elif (args.miDataType == 8 or args.miDataType == 5):
         element_size = 2
-    elif (gemmType == "S_gfx950" or gemmType == "X_gfx950")
+    elif (args.miDataType == 1 or args.miDataType == 11):
         element_size = 4
-    elif (gemmType == "D_gfx950")
+    elif (args.miDataType == 2):
         element_size = 8
 
     tile_list = createTileList(gemmType)
+
+    tile_list =[(208, 128, 32, 16, 16, 32, 1)]
+
     print(" Number of unique tiles: ", len(tile_list))
 
-    if (args.size and not os.path.exists(args.path)):
+    if (args.sizes and not os.path.exists(args.path)):
         raise(" The size file does not exist.")
-    if (args.size):
+    if (args.sizes):
         with open("macrotile_fromOrigami.txt",'w') as file: # for the record
             for tile in tile_list:
                 file.write(f'{tile}\n')
@@ -159,7 +191,7 @@ def main():
     if args.print:
         hardware.print()
 
-    if (args.size): # sizes from a file
+    if (args.sizes): # sizes from a file
       with open(args.path, 'r') as csvfile:
         csv_reader = csv.reader(csvfile)
         for row in csv_reader:
@@ -169,13 +201,10 @@ def main():
             K = int(row[3])
 
             ret = origami.select_best_macro_tile_size(
-                # args.m,
                 M,
-                # args.n,
                 N,
-                # args.k,
                 K,
-                1,
+                B,
                 args.transA,
                 args.transB,
                 hardware,
@@ -184,13 +213,12 @@ def main():
                 element_size * 8,
                 element_size * 8,
                 args.miDataType,
-                0,
+                # 0, #?
                 0.8,
                 args.debug,
                 args.print,
                 args.wgm,
             )
-            # print(f"number of outputs: {M},{N},{B},{K},{ret[0]}")
             print(f"{M},{N},{B},{K},{ret[0]}")
     else: # unique size from terminal
         ret = origami.select_best_macro_tile_size(
@@ -206,7 +234,7 @@ def main():
             element_size * 8,
             element_size * 8,
             args.miDataType,
-            0,
+            # 0,
             0.8,
             args.debug,
             args.print,
