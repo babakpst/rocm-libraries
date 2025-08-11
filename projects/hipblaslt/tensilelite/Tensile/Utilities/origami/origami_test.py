@@ -200,7 +200,6 @@ def main():
             B = int(row[2])
             K = int(row[3])
 
-            print(" size: ", M, N, K)
             ret = origami.select_best_macro_tile_size(
                 M,
                 N,
@@ -221,13 +220,13 @@ def main():
                 args.print,
                 args.wgm,
             )
-            print(f"{M},{N},{B},{K},{ret[0]}")
+            #MxNxBxK, MT0xMT1xDU, MI0xMI1xMI2xMI3, latency/cycles
+            print(f"{M},{N},{B},{K},{ret[0][1]},{ret[0][2]},{ret[0][3]},{ret[0][4]},{ret[0][5]},{ret[0][6]},{ret[0][7]},{ret[0][0]}")
     else: # unique size from terminal
         M = args.m
         N = args.n
         K = args.k
         B = args.b
-        print(" size: ", args.m, args.n, args.k)
         ret = origami.select_best_macro_tile_size(
             args.m,
             args.n,
