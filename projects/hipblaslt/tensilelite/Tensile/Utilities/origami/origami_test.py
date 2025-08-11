@@ -3,27 +3,27 @@
 # python3 origami_test.py -m 2048 -n 2048 -k 2048 --transA T --transB N --element_size 1 --debug --print
 
 # miDataType numbers:
-# Float: 1
-# Double: 2
-# ComplexFloat: 3
-# ComplexDouble: 4
-# Half: 5
-# Int8x4: 6
-# Int32: 7
-# BFloat16: 8
-# Int8: 9
-# Int64: 10
-# XFloat32: 11
-# Float8_fnuz: 12
-# BFloat8_fnuz: 13
-# Float8BFloat8_fnuz: 14
-# BFloat8Float8_fnuz: 15
-# Float8: 16
-# BFloat8: 17
-# Float8BFloat8: 18
-# BFloat8Float8: 19
-# Float6: 20
-# Float4: 21
+# Float: 0
+# Double: 1
+# ComplexFloat: 2
+# ComplexDouble: 3
+# Half: 4
+# Int8x4: 5
+# Int32: 6
+# BFloat16: 7
+# Int8: 8
+# Int64: 9
+# XFloat32: 10
+# Float8_fnuz: 11
+# BFloat8_fnuz: 12
+# Float8BFloat8_fnuz: 13
+# BFloat8Float8_fnuz: 14
+# Float8: 15
+# BFloat8: 16
+# Float8BFloat8: 17
+# BFloat8Float8: 18
+# Float6: 19
+# Float4: 20
 
 datatypes = {
 0 : 'S_',
@@ -166,18 +166,18 @@ def main():
     if (gemmType not in MatInst):    
         raise("Use a valid GEMM: B_gfx950, F_gfx950, F8_gfx950, S_gfx950, X_gfx950, D_gfx950")
     element_size = 0
-    if (args.miDataType == 16):
+    if (args.miDataType == 15):
         element_size = 1
-    elif (args.miDataType == 8 or args.miDataType == 5):
+    elif (args.miDataType == 7 or args.miDataType == 4):
         element_size = 2
-    elif (args.miDataType == 1 or args.miDataType == 11):
+    elif (args.miDataType == 0 or args.miDataType == 10):
         element_size = 4
-    elif (args.miDataType == 2):
+    elif (args.miDataType == 1):
         element_size = 8
 
     tile_list = createTileList(gemmType)
 
-    tile_list =[(208, 128, 32, 16, 16, 32, 1)]
+    tile_list =[(256, 256, 32, 16, 16, 32, 1)]
 
     print(" Number of unique tiles: ", len(tile_list))
 
@@ -200,6 +200,7 @@ def main():
             B = int(row[2])
             K = int(row[3])
 
+            print(" size: ", M, N, K)
             ret = origami.select_best_macro_tile_size(
                 M,
                 N,
@@ -212,8 +213,9 @@ def main():
                 element_size * 8,
                 element_size * 8,
                 element_size * 8,
-                args.miDataType,
-                # 0, #?
+                # args.miDataType,
+                origami.DataType.BFloat16,
+                0,
                 0.8,
                 args.debug,
                 args.print,
@@ -221,6 +223,11 @@ def main():
             )
             print(f"{M},{N},{B},{K},{ret[0]}")
     else: # unique size from terminal
+        M = args.m
+        N = args.n
+        K = args.k
+        B = args.b
+        print(" size: ", args.m, args.n, args.k)
         ret = origami.select_best_macro_tile_size(
             args.m,
             args.n,
@@ -233,8 +240,9 @@ def main():
             element_size * 8,
             element_size * 8,
             element_size * 8,
-            args.miDataType,
-            # 0,
+            # args.miDataType,
+            origami.DataType.BFloat16,
+            0,
             0.8,
             args.debug,
             args.print,
