@@ -177,8 +177,6 @@ def main():
 
     tile_list = createTileList(gemmType)
 
-    tile_list =[(256, 256, 32, 16, 16, 32, 1)]
-
     print(" Number of unique tiles: ", len(tile_list))
 
     if (args.sizes and not os.path.exists(args.path)):
